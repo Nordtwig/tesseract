@@ -24,6 +24,7 @@ func _input(event):
 
 
 func on_voxel_mouse_entered() -> void:
+	print(name)
 	is_mouse_entered = true
 
 
