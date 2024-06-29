@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=3 uid="uid://oithcfbsiy6s"]
+
+[ext_resource type="PackedScene" uid="uid://cweqxa3o5l63r" path="res://voxel.tscn" id="1_s4fis"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fe6ta"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0.5, 0.5, 0.5, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0.5, 0.5, 0.5, 1)
+
+[sub_resource type="Sky" id="Sky_6p13x"]
+sky_material = SubResource("ProceduralSkyMaterial_fe6ta")
+
+[sub_resource type="Environment" id="Environment_ckr32"]
+background_mode = 1
+sky = SubResource("Sky_6p13x")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_5n2b6"]
+
+[node name="Main" type="Node3D"]
+
+[node name="Utils" type="Node" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Utils"]
+transform = Transform3D(-0.320941, -0.802872, -0.502387, 0.482963, -0.595035, 0.642402, -0.814705, -0.0364615, 0.578729, 0, 10.2562, -5.697)
+light_color = Color(1, 1, 0.752941, 1)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Utils"]
+environment = SubResource("Environment_ckr32")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.914591, 0.107372, -0.389866, 0, 0.964105, 0.265521, 0.404381, -0.242843, 0.881762, -0.790159, 1.03633, 1.03319)
+
+[node name="Cube" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, -1)
+mesh = SubResource("BoxMesh_5n2b6")
+
+[node name="Voxel" parent="." instance=ExtResource("1_s4fis")]
+
+[node name="Voxel2" parent="." instance=ExtResource("1_s4fis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.102368, 0, 0)
+
+[node name="Voxel3" parent="." instance=ExtResource("1_s4fis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.205684, 0, 0)
+
+[node name="Voxel4" parent="." instance=ExtResource("1_s4fis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.308657, 0, 0)
+
+[node name="Voxel5" parent="." instance=ExtResource("1_s4fis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.410667, 0, 0)
+
+[node name="Voxel6" parent="." instance=ExtResource("1_s4fis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.511355, 0, 0)
+
+[node name="Voxel7" parent="." instance=ExtResource("1_s4fis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.612575, 0, 0)
+
+[node name="Voxel8" parent="." instance=ExtResource("1_s4fis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.715333, 0, 0)
+
+[node name="Voxel9" parent="." instance=ExtResource("1_s4fis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.815007, 0, 0)
+
+[node name="Voxel10" parent="." instance=ExtResource("1_s4fis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.91722, 0, 0)
