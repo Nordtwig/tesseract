@@ -1,7 +1,9 @@
 extends RigidBody3D
 
+var holo_voxel_instance: Node = null
 
 @onready var voxel_scene: PackedScene = preload("res://voxel.tscn")
+@onready var holo_voxel_scene: PackedScene = preload("res://holo_voxel.tscn")
 
 
 func _ready() -> void:
@@ -14,3 +16,9 @@ func on_voxel_input_event(camera: Node, event: InputEvent, click_position: Vecto
 		voxel_instance.set_script(get_script())
 		get_tree().get_root().get_node("Main").add_child(voxel_instance)
 		voxel_instance.position = position + (normal * Game.VOXEL_SIZE)
+	elif event is InputEventMouseMotion:
+		if !holo_voxel_instance:
+			holo_voxel_instance = holo_voxel_scene.instantiate()
+			holo_voxel_instance.set_script(get_script())
+			get_tree().get_root().get_node("Main").add_child(holo_voxel_instance)
+			holo_voxel_instance.position = position + (normal * Game.VOXEL_SIZE)
