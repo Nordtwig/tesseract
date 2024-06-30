@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfcbofio3nakv"]
+
+[ext_resource type="Script" path="res://voxel.gd" id="1_l3o74"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rctr5"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_gl637"]
+
+[node name="Voxel" type="RigidBody3D"]
+script = ExtResource("1_l3o74")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+shape = SubResource("BoxShape3D_rctr5")
+
+[node name="Front" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0.05)
+mesh = SubResource("QuadMesh_gl637")
+
+[node name="Back" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.1, 0, -8.74228e-09, 0, 0.1, 0, 8.74228e-09, 0, -0.1, 0, 0, -0.05)
+mesh = SubResource("QuadMesh_gl637")
+
+[node name="Top" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, -4.37114e-09, 0.1, 0, -0.1, -4.37114e-09, 0, 0.05, 0)
+mesh = SubResource("QuadMesh_gl637")
+
+[node name="Bottom" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, -4.37114e-09, -0.1, 0, 0.1, -4.37114e-09, 0, -0.05, 0)
+mesh = SubResource("QuadMesh_gl637")
+
+[node name="Left" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, -0.05, 0, 0)
+mesh = SubResource("QuadMesh_gl637")
+
+[node name="Right" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, 0.05, 0, 0)
+mesh = SubResource("QuadMesh_gl637")

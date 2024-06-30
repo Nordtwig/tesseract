@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxvsa8i2rmqn0"]
+[gd_scene load_steps=7 format=3 uid="uid://bxvsa8i2rmqn0"]
 
 [ext_resource type="PackedScene" uid="uid://7qsbaeufyvr2" path="res://camera_pole.tscn" id="1_1gd5m"]
+[ext_resource type="Script" path="res://main.gd" id="1_62ag1"]
+[ext_resource type="PackedScene" uid="uid://dfcbofio3nakv" path="res://voxel.tscn" id="1_s4fis"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jmut5"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -15,9 +17,9 @@ sky = SubResource("Sky_3ylho")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="BoxMesh" id="BoxMesh_ncko1"]
-
-[node name="Main" type="Node3D"]
+[node name="Main" type="Node3D" node_paths=PackedStringArray("camera")]
+script = ExtResource("1_62ag1")
+camera = NodePath("CameraPole/Camera")
 
 [node name="Utils" type="Node" parent="."]
 
@@ -30,5 +32,6 @@ environment = SubResource("Environment_ne8b6")
 
 [node name="CameraPole" parent="." instance=ExtResource("1_1gd5m")]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_ncko1")
+[node name="Voxel" parent="." instance=ExtResource("1_s4fis")]
+
+[editable path="CameraPole"]
