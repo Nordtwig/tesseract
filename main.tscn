@@ -1,54 +1,34 @@
-[gd_scene load_steps=8 format=3 uid="uid://oithcfbsiy6s"]
+[gd_scene load_steps=6 format=3 uid="uid://bxvsa8i2rmqn0"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_62ag1"]
-[ext_resource type="PackedScene" uid="uid://cweqxa3o5l63r" path="res://voxel.tscn" id="1_s4fis"]
-[ext_resource type="Script" path="res://CameraPole.gd" id="2_2hk0k"]
+[ext_resource type="PackedScene" uid="uid://7qsbaeufyvr2" path="res://camera_pole.tscn" id="1_1gd5m"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fe6ta"]
-sky_top_color = Color(0, 0, 0, 1)
-sky_horizon_color = Color(0.5, 0.5, 0.5, 1)
-ground_bottom_color = Color(0, 0, 0, 1)
-ground_horizon_color = Color(0.5, 0.5, 0.5, 1)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jmut5"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_6p13x"]
-sky_material = SubResource("ProceduralSkyMaterial_fe6ta")
+[sub_resource type="Sky" id="Sky_3ylho"]
+sky_material = SubResource("ProceduralSkyMaterial_jmut5")
 
-[sub_resource type="Environment" id="Environment_ckr32"]
-background_mode = 1
-sky = SubResource("Sky_6p13x")
+[sub_resource type="Environment" id="Environment_ne8b6"]
+background_mode = 2
+sky = SubResource("Sky_3ylho")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="BoxMesh" id="BoxMesh_5n2b6"]
+[sub_resource type="BoxMesh" id="BoxMesh_ncko1"]
 
-[node name="Main" type="Node3D" node_paths=PackedStringArray("camera")]
-script = ExtResource("1_62ag1")
-camera = NodePath("CameraPole/Camera")
+[node name="Main" type="Node3D"]
 
 [node name="Utils" type="Node" parent="."]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Utils"]
-transform = Transform3D(-0.320941, -0.802872, -0.502387, 0.482963, -0.595035, 0.642402, -0.814705, -0.0364615, 0.578729, 0, 10.2562, -5.697)
-light_color = Color(1, 1, 0.752941, 1)
-shadow_enabled = true
-
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Utils"]
-transform = Transform3D(0.618362, 0.165739, 0.768218, 0.55992, -0.778838, -0.282666, 0.551469, 0.604931, -0.574405, 0, -7.4591, -33.2319)
-light_color = Color(0.643137, 0.588235, 0.952941, 1)
-light_energy = 0.1
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Utils"]
-environment = SubResource("Environment_ckr32")
+environment = SubResource("Environment_ne8b6")
 
-[node name="Cube" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, -1)
-mesh = SubResource("BoxMesh_5n2b6")
+[node name="CameraPole" parent="." instance=ExtResource("1_1gd5m")]
 
-[node name="Voxel" parent="." instance=ExtResource("1_s4fis")]
-
-[node name="CameraPole" type="Marker3D" parent="."]
-script = ExtResource("2_2hk0k")
-
-[node name="Camera" type="Camera3D" parent="CameraPole"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.033)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_ncko1")
