@@ -8,6 +8,8 @@
 
 [node name="Voxel" type="RigidBody3D"]
 script = ExtResource("1_l3o74")
+voxel_scene = null
+holo_voxel_scene = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
