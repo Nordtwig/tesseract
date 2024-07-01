@@ -1,24 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://ctubvq5sr1qo5"]
+[gd_scene load_steps=4 format=3 uid="uid://ctubvq5sr1qo5"]
 
-[ext_resource type="Script" path="res://voxel.gd" id="1_4sj1k"]
+[ext_resource type="Material" uid="uid://b7dqk2f50kujv" path="res://holo_voxel.tres" id="1_1rqcv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rctr5"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_24332"]
-transparency = 1
-albedo_color = Color(0.192157, 0.584314, 0.768627, 0.180392)
-emission_enabled = true
-emission = Color(0.52549, 0.843137, 1, 1)
-
 [sub_resource type="QuadMesh" id="QuadMesh_gl637"]
-material = SubResource("StandardMaterial3D_24332")
+material = ExtResource("1_1rqcv")
 
-[node name="Voxel" type="RigidBody3D"]
-script = ExtResource("1_4sj1k")
+[node name="HoloVoxel" type="RigidBody3D"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 shape = SubResource("BoxShape3D_rctr5")
+disabled = true
 
 [node name="Front" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0.05)

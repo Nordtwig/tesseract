@@ -1,15 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://dfcbofio3nakv"]
+[gd_scene load_steps=5 format=3 uid="uid://dfcbofio3nakv"]
 
 [ext_resource type="Script" path="res://voxel.gd" id="1_l3o74"]
+[ext_resource type="Material" uid="uid://0jh8eecygyso" path="res://metal_voxel.tres" id="3_q1gfa"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rctr5"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_gl637"]
+material = ExtResource("3_q1gfa")
 
-[node name="Voxel" type="RigidBody3D"]
+[node name="Voxel" type="RigidBody3D" node_paths=PackedStringArray("mesh_sides")]
 script = ExtResource("1_l3o74")
 voxel_scene = null
-holo_voxel_scene = null
+mesh_sides = [NodePath("Front"), NodePath("Back"), NodePath("Top"), NodePath("Bottom"), NodePath("Left"), NodePath("Right")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
