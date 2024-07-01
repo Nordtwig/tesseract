@@ -5,9 +5,7 @@ extends RigidBody3D
 
 var placeholder_voxel_instance: Node = null
 var mouse_is_over_voxel: bool = false
-
-# @onready var voxel_scene: PackedScene = preload("res://voxel.tscn")
-# @onready var holo_voxel_scene: PackedScene = preload("res://HoloVoxel.tscn")
+var last_normal: Vector3
 
 
 func _ready() -> void:
@@ -15,17 +13,16 @@ func _ready() -> void:
 	mouse_entered.connect(on_voxel_mouse_entered)
 	mouse_exited.connect(on_voxel_mouse_exited)
 	voxel_scene = load("res://voxel.tscn")
-	# holo_voxel_scene = preload("res://holo_voxel.tscn")
 
 
 func set_material(material: String) -> void:
 	for mesh in mesh_sides:
 		mesh.material_override = load(material)
 
+
 func on_voxel_input_event(camera: Node, event: InputEvent, click_position: Vector3, normal: Vector3, shape_idx: int) -> void:
-	print(mouse_is_over_voxel)
 	if event.is_action_pressed("left_click"):
-		placeholder_voxel_instance.set_material("res://voxel.tres")
+		placeholder_voxel_instance.set_material("res://metal_voxel.tres")
 		placeholder_voxel_instance.get_node("CollisionShape3D").disabled = false
 		placeholder_voxel_instance = null
 	elif event is InputEventMouseMotion:
@@ -35,6 +32,9 @@ func on_voxel_input_event(camera: Node, event: InputEvent, click_position: Vecto
 			get_tree().get_root().get_node("Main").add_child(placeholder_voxel_instance)
 			placeholder_voxel_instance.set_material("res://holo_voxel.tres")
 			placeholder_voxel_instance.get_node("CollisionShape3D").disabled = true
+			placeholder_voxel_instance.position = position + (normal * Game.VOXEL_SIZE)
+			last_normal = normal
+		elif placeholder_voxel_instance and last_normal != normal:
 			placeholder_voxel_instance.position = position + (normal * Game.VOXEL_SIZE)
 
 

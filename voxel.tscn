@@ -10,7 +10,6 @@ material = ExtResource("3_q1gfa")
 
 [node name="Voxel" type="RigidBody3D" node_paths=PackedStringArray("mesh_sides")]
 script = ExtResource("1_l3o74")
-voxel_scene = null
 mesh_sides = [NodePath("Front"), NodePath("Back"), NodePath("Top"), NodePath("Bottom"), NodePath("Left"), NodePath("Right")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

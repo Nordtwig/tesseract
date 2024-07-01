@@ -32,6 +32,9 @@ environment = SubResource("Environment_ne8b6")
 
 [node name="CameraPole" parent="." instance=ExtResource("1_1gd5m")]
 
+[node name="Camera" parent="CameraPole" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.539779)
+
 [node name="Voxel" parent="." instance=ExtResource("1_s4fis")]
 
 [editable path="CameraPole"]
