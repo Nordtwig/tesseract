@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cttwfu46rl3c6"]
+
+[ext_resource type="Script" path="res://voxel_overlay.gd" id="1_lbowy"]
+[ext_resource type="PackedScene" uid="uid://dyfuk4uxf1j4d" path="res://holo_voxel_new.tscn" id="2_kcmwx"]
+
+[node name="VoxelOverlay" type="Node3D"]
+script = ExtResource("1_lbowy")
+holo_voxel_scene = ExtResource("2_kcmwx")

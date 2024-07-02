@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyfuk4uxf1j4d"]
+
+[ext_resource type="PackedScene" uid="uid://rn41rlf5i1re" path="res://weird_holo_voxel.blend" id="1_q7kv0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4b0vs"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.411765, 0.501961, 0.882353, 0.0431373)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="weird_holo_voxel-01a3fdeedeee1c1b7a446c7a9e37a92e" parent="." instance=ExtResource("1_q7kv0")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.05, 0.05, 0.05)
+
+[node name="Cube" parent="weird_holo_voxel-01a3fdeedeee1c1b7a446c7a9e37a92e" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_4b0vs")
+
+[editable path="weird_holo_voxel-01a3fdeedeee1c1b7a446c7a9e37a92e"]

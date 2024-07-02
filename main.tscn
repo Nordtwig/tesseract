@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxvsa8i2rmqn0"]
+[gd_scene load_steps=8 format=3 uid="uid://bxvsa8i2rmqn0"]
 
 [ext_resource type="PackedScene" uid="uid://7qsbaeufyvr2" path="res://camera_pole.tscn" id="1_1gd5m"]
 [ext_resource type="Script" path="res://main.gd" id="1_62ag1"]
 [ext_resource type="PackedScene" uid="uid://dfcbofio3nakv" path="res://voxel.tscn" id="1_s4fis"]
+[ext_resource type="PackedScene" uid="uid://cttwfu46rl3c6" path="res://voxel_overlay.tscn" id="4_4yli7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jmut5"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -17,14 +18,6 @@ background_color = Color(0.0666667, 0.145098, 0.203922, 1)
 sky = SubResource("Sky_3ylho")
 tonemap_mode = 2
 glow_enabled = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mn6cd"]
-transparency = 1
-shading_mode = 2
-albedo_color = Color(0.333333, 0.466667, 0.219608, 0.231373)
-
-[sub_resource type="BoxMesh" id="BoxMesh_6krtq"]
-material = SubResource("StandardMaterial3D_mn6cd")
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_62ag1")
@@ -47,10 +40,8 @@ environment = SubResource("Environment_ne8b6")
 [node name="CameraPole" parent="." instance=ExtResource("1_1gd5m")]
 
 [node name="Voxel" parent="." instance=ExtResource("1_s4fis")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 0.05, 0.05)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0.05, 0.05)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-mesh = SubResource("BoxMesh_6krtq")
+[node name="VoxelOverlay" parent="." instance=ExtResource("4_4yli7")]
 
 [editable path="CameraPole"]
