@@ -1,5 +1,6 @@
 extends RigidBody3D
 
+
 @export var voxel_scene: Resource
 @export var mesh_sides: Array[MeshInstance3D]
 
@@ -25,7 +26,9 @@ func on_voxel_input_event(camera: Node, event: InputEvent, click_position: Vecto
 		placeholder_voxel_instance.set_material("res://metal_voxel.tres")
 		placeholder_voxel_instance.get_node("CollisionShape3D").disabled = false
 		placeholder_voxel_instance = null
-	elif event is InputEventMouseMotion:
+	if event.is_action_released("right_click"):
+		Events.voxel_right_clicked.emit(position)
+	if event is InputEventMouseMotion:
 		if !placeholder_voxel_instance and mouse_is_over_voxel:
 			placeholder_voxel_instance = voxel_scene.instantiate()
 			placeholder_voxel_instance.set_script(get_script())

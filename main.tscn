@@ -12,28 +12,31 @@ ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 sky_material = SubResource("ProceduralSkyMaterial_jmut5")
 
 [sub_resource type="Environment" id="Environment_ne8b6"]
-background_mode = 2
+background_mode = 1
+background_color = Color(0.0666667, 0.145098, 0.203922, 1)
 sky = SubResource("Sky_3ylho")
 tonemap_mode = 2
 glow_enabled = true
 
-[node name="Main" type="Node3D" node_paths=PackedStringArray("camera")]
+[node name="Main" type="Node3D"]
 script = ExtResource("1_62ag1")
-camera = NodePath("CameraPole/Camera")
 
 [node name="Utils" type="Node" parent="."]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Utils"]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+[node name="MainLight" type="DirectionalLight3D" parent="Utils"]
+transform = Transform3D(-0.707107, -0.5, -0.5, -3.37951e-08, -0.707107, 0.707107, -0.707107, 0.5, 0.5, -1.67299, 0.976622, 1.58978)
+shadow_enabled = true
+
+[node name="BackLight" type="DirectionalLight3D" parent="Utils"]
+transform = Transform3D(-0.791162, -0.381423, 0.478099, -0.60826, 0.572369, -0.549922, -0.0638961, -0.725886, -0.684841, 1.16905, 0, -1.73182)
+light_color = Color(0.592157, 0.329412, 0.337255, 1)
+light_energy = 0.5
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Utils"]
 environment = SubResource("Environment_ne8b6")
 
 [node name="CameraPole" parent="." instance=ExtResource("1_1gd5m")]
-
-[node name="Camera" parent="CameraPole" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.539779)
 
 [node name="Voxel" parent="." instance=ExtResource("1_s4fis")]
 
